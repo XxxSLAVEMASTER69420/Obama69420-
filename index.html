@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color-Changing Duck</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            text-align: center;
+        }
+        
+        .duck {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            transition: background-color 3s ease-in-out;
+        }
+        
+        .duck.yellow {
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFC700);
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: waddle 2s infinite;
+        }
+        
+        .duck.black {
+            background: radial-gradient(circle at 30% 30%, #333333, #000000);
+            border-radius: 50%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: waddle 2s infinite;
+        }
+        
+        @keyframes waddle {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            background-color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🦆 Color-Changing Duck</h1>
+        <p>Click the button to change the duck's color!</p>
+        <div class="duck yellow" id="duck"></div>
+        <button onclick="toggleDuckColor()">Change Duck Color</button>
+    </div>
+    
+    <script>
+        let isYellow = true;
+        
+        function toggleDuckColor() {
+            const duck = document.getElementById('duck');
+            if (isYellow) {
+                duck.classList.remove('yellow');
+                duck.classList.add('black');
+            } else {
+                duck.classList.remove('black');
+                duck.classList.add('yellow');
+            }
+            isYellow = !isYellow;
+        }
+    </script>
+</body>
+</html>
