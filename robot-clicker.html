@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Robot</title>
+    <style>
+        #robot {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            margin: auto;
+        }
+        #robot:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div id="robot"></div>
+    <script>
+        const robot = document.getElementById('robot');
+        let growInterval;
+        
+        robot.addEventListener('click', () => {
+            clearInterval(growInterval);
+            robot.style.transform = 'scale(1.5)';
+            growInterval = setInterval(() => {
+                robot.style.transform = 'scale(1)';
+            }, 1000);
+        });
+
+        robot.addEventListener('mouseleave', () => {
+            robot.style.transform = 'scale(1)';
+        });
+    </script>
+</body>
+</html>
